@@ -6,19 +6,22 @@ class ContentRating extends Component {
     constructor() {
         super();
         this.state = {
-        likes: 0,
-        dislikes: 0,
-        handleLike:() => {
-            this.setState((prevState) => ({
-                likes: prevState.likes + 1
-            }));
-        },
+            likes: 0,
+            dislikes: 0,
+            totalRatings: 0,
+            handleLike:() => {
+                this.setState((prevState) => ({
+                    likes: prevState.likes + 1,
+                    totalRatings: prevState.totalRatings + 1
+                }));
+            },
 
-        handleDislike:() => {
-            this.setState((prevState) => ({
-                dislikes: prevState.dislikes + 1
-            }));
-        }
+            handleDislike:() => {
+                this.setState((prevState) => ({
+                    dislikes: prevState.dislikes + 1,
+                    totalRatings: prevState.totalRatings + 1
+                }));
+            }
         }
     }
   render() {
@@ -36,6 +39,9 @@ class ContentRating extends Component {
                     No me gusta ({this.state.dislikes})
                 </button>
             </div>
+            <p>
+            Total de Likes y Dislikes: {this.state.totalRatings}
+            </p>
         </div>
      </>
     );
